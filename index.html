@@ -1,0 +1,1731 @@
+<!doctype html>
+<html lang="pt-BR" data-lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Isabela Rocha · Manicure & Nail Design</title>
+    <meta
+      name="description"
+      content="Manicure profissional em Copacabana. Agendamento pelo WhatsApp."
+    />
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ══════════════════════════════════════════
+   CONFIGURAÇÃO DO CLIENTE — edite só aqui
+   ══════════════════════════════════════════ */
+      :root {
+        --cor: #c94c86;
+        --cor-rgb: 201, 168, 76;
+        --cor-escura: #900154;
+        --fonte-nome: "Playfair Display", serif;
+        --fonte-corpo: "Inter", sans-serif;
+        --padrao: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='1' fill='%23C9A84C' fill-opacity='0.07'/%3E%3C/svg%3E");
+      }
+      /* ══ MODO ESCURO (padrão) ══ */
+      :root {
+        --bg: #0e0e0e;
+        --bg2: #181818;
+        --bg3: rgba(255, 255, 255, 0.04);
+        --borda: rgba(255, 255, 255, 0.08);
+        --texto: #f0ede8;
+        --texto2: #a09098;
+        --texto3: rgba(240, 232, 234, 0.3);
+        --sombra: rgba(0, 0, 0, 0.5);
+      }
+      /* ══ MODO CLARO (segue sistema) ══ */
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #f5f2ee;
+          --bg2: #edeae5;
+          --bg3: rgba(0, 0, 0, 0.04);
+          --borda: rgba(0, 0, 0, 0.09);
+          --texto: #1a1714;
+          --texto2: #6b6064;
+          --texto3: rgba(26, 23, 20, 0.3);
+          --sombra: rgba(0, 0, 0, 0.12);
+        }
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background-color: var(--bg);
+        /* background-image: var(--padrao); */
+        color: var(--texto);
+        font-family: var(--fonte-corpo);
+        min-height: 100dvh;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 32px 16px 48px;
+        -webkit-font-smoothing: antialiased;
+      }
+      .card {
+        width: 100%;
+        max-width: 400px;
+      }
+
+      /* ══ ANIMAÇÕES ══ */
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition:
+          opacity 0.55s ease,
+          transform 0.55s ease;
+      }
+      .reveal.v {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .pop {
+        opacity: 0;
+        transform: scale(0.92);
+        transition:
+          opacity 0.45s ease,
+          transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .pop.v {
+        opacity: 1;
+        transform: scale(1);
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes girar {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes pulsarBtn {
+        0%,
+        100% {
+          box-shadow: 0 0 0 0 rgba(var(--cor-rgb), 0);
+        }
+        50% {
+          box-shadow: 0 0 0 6px rgba(var(--cor-rgb), 0.15);
+        }
+      }
+      @keyframes pulsarDot {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.3);
+          opacity: 0.7;
+        }
+      }
+
+      /* ══ TOPO ══ */
+      .topo-linha {
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--cor),
+          transparent
+        );
+        border-radius: 99px;
+        margin-bottom: 36px;
+        animation: fadeIn 1s 0.2s both;
+      }
+
+      /* ══ LANG TOGGLE ══ */
+      .lang-wrap {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 16px;
+      }
+      .lang-btn {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        padding: 5px 12px;
+        border-radius: 99px;
+        border: 1px solid var(--borda);
+        background: var(--bg3);
+        color: var(--texto2);
+        cursor: pointer;
+        transition: all 0.2s;
+        font-family: var(--fonte-corpo);
+      }
+      .lang-btn:hover {
+        border-color: var(--cor);
+        color: var(--cor);
+      }
+
+      /* ══ CABEÇALHO ══ */
+      .cabecalho {
+        text-align: center;
+        margin-bottom: 28px;
+      }
+      .foto-wrapper {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 18px;
+      }
+      .foto-anel {
+        position: absolute;
+        inset: -6px;
+        border-radius: 50%;
+        background: conic-gradient(var(--cor), var(--cor-escura), var(--cor));
+        animation: girar 4s linear infinite;
+        z-index: 0;
+      }
+      .foto-anel::after {
+        content: "";
+        position: absolute;
+        inset: 3px;
+        border-radius: 50%;
+        background: var(--bg);
+      }
+      .foto,
+      .foto-ph {
+        position: relative;
+        z-index: 1;
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        display: block;
+        margin: 0 auto;
+      }
+      .foto {
+        object-fit: cover;
+      }
+      .foto-ph {
+        background: var(--bg2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--fonte-nome);
+        font-size: 34px;
+        color: var(--cor);
+      }
+      .badge {
+        position: absolute;
+        bottom: 3px;
+        right: 3px;
+        z-index: 2;
+        background: var(--bg);
+        border-radius: 99px;
+        padding: 3px 7px;
+        font-size: 10px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        border: 1px solid var(--borda);
+        white-space: nowrap;
+      }
+      .badge .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #2ecc71;
+        animation: pulsarDot 2s ease-in-out infinite;
+      }
+      .badge.fechado .dot {
+        background: var(--texto3);
+        animation: none;
+      }
+      .nome {
+        font-family: var(--fonte-nome);
+        font-size: 26px;
+        font-weight: 600;
+        line-height: 1.2;
+        margin-bottom: 5px;
+        color: var(--texto);
+      }
+      .profissao {
+        font-size: 12px;
+        color: var(--cor);
+        text-transform: uppercase;
+        letter-spacing: 0.13em;
+        margin-bottom: 8px;
+      }
+      .local {
+        font-size: 13px;
+        color: var(--texto2);
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .selos {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 14px;
+      }
+      .selo {
+        font-size: 11px;
+        padding: 4px 10px;
+        border-radius: 99px;
+        border: 1px solid rgba(var(--cor-rgb), 0.35);
+        color: var(--cor);
+        background: rgba(var(--cor-rgb), 0.08);
+        font-weight: 500;
+      }
+
+      /* ══ SOBRE ══ */
+      .sobre {
+        margin-bottom: 24px;
+      }
+      .sobre-btn {
+        width: 100%;
+        background: var(--bg3);
+        border: 1px solid var(--borda);
+        border-radius: 12px;
+        padding: 14px 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        color: var(--texto);
+        font-size: 13px;
+        font-weight: 500;
+        font-family: var(--fonte-corpo);
+        transition: border-color 0.2s;
+      }
+      .sobre-btn:hover {
+        border-color: rgba(var(--cor-rgb), 0.4);
+      }
+      .sobre-seta {
+        transition: transform 0.3s;
+        color: var(--texto2);
+      }
+      .sobre-btn[aria-expanded="true"] .sobre-seta {
+        transform: rotate(180deg);
+      }
+      .sobre-body {
+        max-height: 0;
+        overflow: hidden;
+        transition:
+          max-height 0.35s ease,
+          padding 0.3s;
+        font-size: 13.5px;
+        line-height: 1.7;
+        color: var(--texto2);
+        text-align: justify;
+      }
+      .sobre-body.open {
+        max-height: 300px;
+        padding: 14px 16px 4px;
+      }
+
+      /* ══ DIVISOR ══ */
+      hr {
+        border: none;
+        border-top: 1px solid var(--borda);
+        margin: 0 0 24px;
+      }
+
+      /* ══ BOTÕES ══ */
+      .acoes {
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+        margin-bottom: 24px;
+      }
+      .btn {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        padding: 14px 16px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-size: 13.5px;
+        font-weight: 500;
+        color: var(--texto);
+        background: var(--bg3);
+        border: 1px solid var(--borda);
+        transition:
+          background 0.18s,
+          border-color 0.18s,
+          transform 0.12s;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        font-family: var(--fonte-corpo);
+        width: 100%;
+        text-align: left;
+      }
+      .btn:active {
+        transform: scale(0.98);
+      }
+      .btn:hover {
+        background: rgba(var(--cor-rgb), 0.07);
+        border-color: rgba(var(--cor-rgb), 0.3);
+      }
+      .btn-p {
+        background: var(--cor);
+        border-color: var(--cor);
+        color: #0e0e0e;
+        font-weight: 600;
+        animation: pulsarBtn 3s ease-in-out infinite;
+      }
+      .btn-p:hover {
+        filter: brightness(1.08);
+        border-color: var(--cor);
+        color: var(--cor);
+      }
+      .btn-ico {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .btn-p .btn-ico {
+        background: rgba(0, 0, 0, 0.112);
+      }
+      .btn-lbl {
+        flex: 1;
+      }
+      .btn-sub {
+        font-size: 11px;
+        font-weight: 300;
+        opacity: 0.6;
+        display: block;
+        margin-top: 1px;
+      }
+      .btn-arr {
+        opacity: 0.35;
+        flex-shrink: 0;
+      }
+      .feedback {
+        font-size: 11px;
+        color: #2ecc71;
+        margin-top: 2px;
+        display: none;
+        font-weight: 500;
+      }
+      .feedback.on {
+        display: block;
+      }
+      .duo {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+      .duo .btn {
+        border-radius: 11px;
+      }
+
+      /* ══ GALERIA ══ */
+      .sec-titulo {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--texto2);
+        margin-bottom: 12px;
+      }
+      .galeria-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+      }
+      .gitem {
+        aspect-ratio: 1;
+        border-radius: 10px;
+        overflow: hidden;
+        cursor: pointer;
+        position: relative;
+        background: var(--bg2);
+      }
+      .gitem img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s;
+      }
+      .gitem:hover img {
+        transform: scale(1.06);
+      }
+      .gitem-over {
+        position: absolute;
+        inset: 0;
+        background: rgba(var(--cor-rgb), 0.2);
+        opacity: 0;
+        transition: opacity 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .gitem:hover .gitem-over {
+        opacity: 1;
+      }
+      .gph {
+        aspect-ratio: 1;
+        border-radius: 10px;
+        background: var(--bg2);
+        border: 1px dashed var(--borda);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        color: var(--texto3);
+        text-align: center;
+        padding: 8px;
+      }
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: rgba(0, 0, 0, 0.93);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition:
+          opacity 0.25s ease,
+          visibility 0.25s ease;
+      }
+      .lightbox.on {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+      .lightbox img {
+        max-width: 100%;
+        max-height: 85vh;
+        border-radius: 12px;
+        object-fit: contain;
+        display: block;
+      }
+      .lb-close {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        z-index: 10000;
+        background: rgba(255, 255, 255, 0.15);
+        border: none;
+        color: #fff;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-tap-highlight-color: transparent;
+      }
+      body.lb-open {
+        overflow: hidden;
+      }
+
+      /* ══ DEPOIMENTOS ══ */
+      .carrossel {
+        overflow: hidden;
+        border-radius: 12px;
+        position: relative;
+      }
+      .c-track {
+        display: flex;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .dep {
+        min-width: 100%;
+        padding: 18px;
+        background: var(--bg3);
+        border: 1px solid var(--borda);
+        border-radius: 12px;
+        font-size: 13.5px;
+        line-height: 1.65;
+        color: var(--texto2);
+      }
+      .dep-txt {
+        margin-bottom: 12px;
+        font-style: italic;
+      }
+      .dep-autor {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .dep-av {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: rgba(var(--cor-rgb), 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        color: var(--cor);
+        font-weight: 600;
+        flex-shrink: 0;
+      }
+      .dep-nome {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--texto);
+      }
+      .dep-cargo {
+        font-size: 11px;
+        color: var(--texto3);
+      }
+      .estrelas {
+        color: var(--cor);
+        font-size: 12px;
+        margin-bottom: 2px;
+      }
+      .c-dots {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 12px;
+      }
+      .cdot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--borda);
+        border: none;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          transform 0.2s;
+      }
+      .cdot.on {
+        background: var(--cor);
+        transform: scale(1.3);
+      }
+
+      /* ══ CONTADORES ══ */
+      .contadores {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        margin-bottom: 24px;
+      }
+      .cnt {
+        background: var(--bg3);
+        border: 1px solid var(--borda);
+        border-radius: 12px;
+        padding: 14px 10px;
+        text-align: center;
+      }
+      .cnt-n {
+        font-size: 22px;
+        font-weight: 600;
+        color: var(--cor);
+        font-family: var(--fonte-nome);
+        display: block;
+        line-height: 1;
+        margin-bottom: 4px;
+      }
+      .cnt-l {
+        font-size: 10px;
+        color: var(--texto2);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        line-height: 1.3;
+      }
+
+      /* ══ HORÁRIOS ══ */
+      .horarios {
+        background: var(--bg3);
+        border: 1px solid var(--borda);
+        border-radius: 12px;
+        padding: 16px;
+        margin-bottom: 24px;
+      }
+      .hitem {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        padding: 5px 0;
+      }
+      .hitem + .hitem {
+        border-top: 1px solid var(--borda);
+      }
+      .hdia {
+        color: var(--texto2);
+      }
+      .hhora {
+        color: var(--texto);
+        font-weight: 500;
+      }
+      .hfech {
+        color: var(--texto3);
+        font-style: italic;
+        font-size: 12px;
+      }
+      .hhoje {
+        color: var(--cor);
+        font-weight: 600;
+      }
+
+      /* ══ CATÁLOGO ══ */
+      .svc {
+        border: 1px solid var(--borda);
+        border-radius: 11px;
+        margin-bottom: 7px;
+        overflow: hidden;
+        background: var(--bg3);
+      }
+      .svc-h {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 13px 15px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        color: var(--texto);
+        font-family: var(--fonte-corpo);
+        font-size: 13.5px;
+        font-weight: 500;
+        text-align: left;
+        transition: color 0.2s;
+      }
+      .svc-h:hover {
+        color: var(--cor);
+      }
+      .svc-preco {
+        font-weight: 600;
+        color: var(--cor);
+        font-size: 14px;
+        margin-right: 8px;
+        white-space: nowrap;
+      }
+      .svc-arr {
+        color: var(--texto3);
+        transition: transform 0.3s;
+        flex-shrink: 0;
+      }
+      .svc-h[aria-expanded="true"] .svc-arr {
+        transform: rotate(180deg);
+      }
+      .svc-d {
+        max-height: 0;
+        overflow: hidden;
+        transition:
+          max-height 0.3s ease,
+          padding 0.3s;
+        font-size: 13px;
+        color: var(--texto2);
+        line-height: 1.6;
+      }
+      .svc-d.open {
+        max-height: 120px;
+        padding: 0 15px 13px;
+      }
+
+      /* ══ TAGS ══ */
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin-bottom: 24px;
+      }
+      .tag {
+        font-size: 12px;
+        padding: 5px 12px;
+        border-radius: 99px;
+        background: var(--bg3);
+        border: 1px solid var(--borda);
+        color: var(--texto2);
+      }
+
+      /* ══ QR ══ */
+      .qr-sec {
+        text-align: center;
+        background: var(--bg3);
+        border: 1px solid var(--borda);
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 24px;
+      }
+      #qr-box {
+        display: inline-flex;
+        padding: 12px;
+        background: #fff;
+        border-radius: 10px;
+        margin: 12px 0 8px;
+      }
+      .qr-label {
+        font-size: 11px;
+        color: var(--texto3);
+      }
+
+      /* ══ RODAPÉ ══ */
+      .rodape {
+        text-align: center;
+        font-size: 11px;
+        color: var(--texto3);
+        padding-top: 8px;
+      }
+
+      /* ══ MULTILÍNGUE ══ */
+      [data-lang="en"] .pt {
+        display: none;
+      }
+      [data-lang="pt"] .en {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="lightbox" id="lb">
+      <button class="lb-close" id="lb-close">✕</button
+      ><img id="lb-img" src="" alt="" />
+    </div>
+
+    <main class="card">
+      <div class="lang-wrap reveal">
+        <button class="lang-btn" id="lang-btn">
+          <span class="pt">🇺🇸 English</span><span class="en">🇧🇷 Português</span>
+        </button>
+      </div>
+      <div class="topo-linha"></div>
+
+      <!-- CABEÇALHO -->
+      <header class="cabecalho pop">
+        <div class="foto-wrapper">
+          <div class="foto-anel"></div>
+          <!-- Troque por <img class="foto" src="foto.jpg" alt="Nome"> quando tiver foto -->
+          <img class="foto" src="perfil.png" alt="Nome" />
+          <!-- <div class="foto-ph">I</div> -->
+          <div class="badge" id="badge">
+            <span class="dot"></span
+            ><span id="badge-pt" class="pt">Verificando...</span
+            ><span id="badge-en" class="en">Checking...</span>
+          </div>
+        </div>
+        <h1 class="nome">Isabela Rocha</h1>
+        <p class="profissao">
+          <span class="pt">Manicure &amp; Nail Design</span
+          ><span class="en">Nail Artist</span>
+        </p>
+        <p class="local">
+          <svg
+            width="13"
+            height="13"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+            />
+            <circle cx="12" cy="9" r="2.5" /></svg
+          >Copacabana, Rio de Janeiro
+        </p>
+        <div class="selos">
+          <span class="selo"
+            >✦ <span class="pt">5 anos de experiência</span
+            ><span class="en">5 years exp.</span></span
+          >
+          <span class="selo"
+            >📍 <span class="pt">Atende em domicílio</span
+            ><span class="en">Home visits</span></span
+          >
+        </div>
+      </header>
+
+      <!-- SOBRE -->
+      <div class="sobre reveal">
+        <button
+          class="sobre-btn"
+          id="sobre-btn"
+          aria-expanded="false"
+          aria-controls="sobre-body"
+        >
+          <span class="pt">Sobre mim</span><span class="en">About me</span>
+          <svg
+            class="sobre-seta"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </button>
+        <div class="sobre-body" id="sobre-body">
+          <p class="pt">
+            Manicure profissional com mais de 5 anos de experiência.
+            Especialista em nail art, gel e acrílico. Atendo no meu estúdio em
+            Copacabana ou em domicílio mediante agendamento prévio.
+          </p>
+          <p class="en">
+            Professional nail artist with 5+ years of experience. Specialist in
+            nail art, gel and acrylic. Studio in Copacabana or home visits by
+            appointment.
+          </p>
+        </div>
+      </div>
+
+      <hr />
+
+      <!-- BOTÕES -->
+      <section class="acoes reveal">
+        <a
+          class="btn btn-p"
+          href="https://wa.me/5521975811821?text=Olá%2C%20vi%20seu%20cartão%20digital%20e%20gostaria%20de%20agendar!"
+          target="_blank"
+          rel="noopener"
+        >
+          <span class="btn-ico"
+            ><svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"
+              />
+              <path
+                d="M12 0C5.373 0 0 5.373 0 12c0 2.136.564 4.14 1.547 5.874L.057 23.357a.75.75 0 00.917.908l5.623-1.472A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.7-.5-5.25-1.373l-.378-.213-3.916 1.026 1.043-3.807-.233-.38A10 10 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"
+              /></svg
+          ></span>
+          <span class="btn-lbl"
+            ><span class="pt">Agendar pelo WhatsApp</span
+            ><span class="en">Book via WhatsApp</span
+            ><span class="btn-sub pt">Resposta em até 3h</span
+            ><span class="btn-sub en">Reply within 3h</span></span
+          >
+          <svg
+            class="btn-arr"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <path d="M7 17L17 7M7 7h10v10" />
+          </svg>
+        </a>
+
+        <a
+          class="btn"
+          href="https://instagram.com/isabelanails"
+          target="_blank"
+          rel="noopener"
+        >
+          <span class="btn-ico"
+            ><svg
+              width="19"
+              height="19"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <rect x="2" y="2" width="20" height="20" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle
+                cx="17.5"
+                cy="6.5"
+                r=".8"
+                fill="currentColor"
+                stroke="none"
+              /></svg
+          ></span>
+          <span class="btn-lbl"
+            >@isabelanails<span class="btn-sub pt"
+              >Ver portfólio no Instagram</span
+            ><span class="btn-sub en">View Instagram portfolio</span></span
+          >
+          <svg
+            class="btn-arr"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <path d="M7 17L17 7M7 7h10v10" />
+          </svg>
+        </a>
+
+        <div class="duo">
+          <a
+            class="btn"
+            href="https://maps.google.com/?q=Copacabana,Rio+de+Janeiro"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="btn-ico"
+              ><svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                />
+                <circle cx="12" cy="9" r="2.5" /></svg
+            ></span>
+            <span class="btn-lbl" style="font-size: 12px">Google Maps</span>
+          </a>
+          <a
+            class="btn"
+            href="https://waze.com/ul?q=Copacabana+Rio+de+Janeiro"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="btn-ico"
+              ><svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <circle cx="12" cy="11" r="7" />
+                <path d="M9 14s1 1.5 3 1.5 3-1.5 3-1.5" />
+                <circle
+                  cx="9.5"
+                  cy="10"
+                  r="1"
+                  fill="currentColor"
+                  stroke="none"
+                />
+                <circle
+                  cx="14.5"
+                  cy="10"
+                  r="1"
+                  fill="currentColor"
+                  stroke="none"
+                /></svg
+            ></span>
+            <span class="btn-lbl" style="font-size: 12px">Waze</span>
+          </a>
+        </div>
+
+        <button class="btn" id="btn-tel">
+          <span class="btn-ico"
+            ><svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <rect x="9" y="9" width="13" height="13" rx="2" />
+              <path
+                d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"
+              /></svg
+          ></span>
+          <span class="btn-lbl"
+            ><span class="pt">Copiar número</span
+            ><span class="en">Copy number</span
+            ><span class="btn-sub">(21) 99999-9999</span
+            ><span class="feedback" id="fb-tel"
+              >✓ <span class="pt">Copiado!</span
+              ><span class="en">Copied!</span></span
+            ></span
+          >
+        </button>
+
+        <button class="btn" id="btn-pix">
+          <span class="btn-ico"
+            ><svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <path d="M4 8l8-4 8 4v8l-8 4-8-4V8z" />
+              <path d="M4 8l8 4 8-4M12 12v8" /></svg
+          ></span>
+          <span class="btn-lbl"
+            ><span class="pt">Copiar chave PIX</span
+            ><span class="en">Copy PIX key</span
+            ><span class="btn-sub">isabela@email.com</span
+            ><span class="feedback" id="fb-pix"
+              >✓ <span class="pt">Chave copiada!</span
+              ><span class="en">Copied!</span></span
+            ></span
+          >
+        </button>
+
+        <button class="btn" id="btn-vcf">
+          <span class="btn-ico"
+            ><svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+              <circle cx="12" cy="7" r="4" /></svg
+          ></span>
+          <span class="btn-lbl"
+            ><span class="pt">Salvar contato</span
+            ><span class="en">Save contact</span
+            ><span class="btn-sub pt">Abre nos Contatos do celular</span
+            ><span class="btn-sub en">Opens in phone Contacts</span></span
+          >
+          <svg
+            class="btn-arr"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"
+            />
+          </svg>
+        </button>
+      </section>
+
+      <hr />
+
+      <!-- GALERIA -->
+      <section class="reveal" style="margin-bottom: 24px">
+        <!-- <p class="sec-titulo pt">Portfólio</p> -->
+        <!-- <p class="sec-titulo en">Portfolio</p> -->
+        <div class="galeria-grid" id="galeria">
+          <!-- Com fotos reais, substitua .gph por:
+      <div class="gitem"><img src="foto1.jpg" alt="Nail art francesa"><div class="gitem-over"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div>
+      -->
+          <div class="gitem">
+            <img src="4.jpg" alt="Nail art francesa" />
+            <div class="gitem-over">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="2"
+              >
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+              </svg>
+            </div>
+          </div>
+          <div class="gitem">
+            <img src="8.jpg" alt="Nail art francesa" />
+            <div class="gitem-over">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="2"
+              >
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+              </svg>
+            </div>
+          </div>
+          <div class="gitem">
+            <img src="21.jpg" alt="Nail art francesa" />
+            <div class="gitem-over">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="2"
+              >
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+              </svg>
+            </div>
+          </div>
+          <div class="gitem">
+            <img src="11.jpg" alt="Nail art francesa" />
+            <div class="gitem-over">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="2"
+              >
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+              </svg>
+            </div>
+          </div>
+          <div class="gitem">
+            <img src="22.png" alt="Nail art francesa" />
+            <div class="gitem-over">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="2"
+              >
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+              </svg>
+            </div>
+          </div>
+          <div class="gitem">
+            <img src="17.jpg" alt="Nail art francesa" />
+            <div class="gitem-over">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="2"
+              >
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr />
+
+      <!-- DEPOIMENTOS -->
+      <section class="reveal" style="margin-bottom: 24px">
+        <p class="sec-titulo pt">Depoimentos</p>
+        <p class="sec-titulo en">Testimonials</p>
+        <div class="carrossel">
+          <div class="c-track" id="c-track">
+            <div class="dep">
+              <div class="estrelas">★★★★★</div>
+              <p class="dep-txt pt">"Melhor manicure que já tive! As unhas duraram mais de 3 semanas perfeitas. Super caprichosa e atenciosa."</p>
+              <p class="dep-txt en">"Best nail artist I've ever had! My nails stayed perfect for over 3 weeks. Very careful and attentive."</p>
+              <div class="dep-autor">
+                <div class="dep-av">A</div>
+                <div>
+                  <p class="dep-nome">Ana Lima</p>
+                  <!-- <p class="dep-cargo pt">Cliente desde 2022</p>
+                  <p class="dep-cargo en">Client since 2022</p> -->
+                </div>
+              </div>
+            </div>
+            <div class="dep">
+              <div class="estrelas">★★★★★</div>
+              <p class="dep-txt pt">"Fiz nail art pela primeira vez e ficou incrível. Estúdio super limpo e organizado, e ela tem muita paciência."</p>
+              <p class="dep-txt en">"I tried nail art for the first time and it was amazing. Studio is super clean and organized, and she's very patient."</p>
+              <div class="dep-autor">
+                <div class="dep-av">M</div>
+                <div>
+                  <p class="dep-nome">Maria Fernanda</p>
+                  <!-- <p class="dep-cargo pt">Cliente desde 2023</p>
+                  <p class="dep-cargo en">Client since 2023</p> -->
+                </div>
+              </div>
+            </div>
+            <div class="dep">
+              <div class="estrelas">★★★★★</div>
+              <p class="dep-txt pt">"Atendeu em domicílio e foi pontualíssima. Já indiquei para várias amigas, todas adoraram!"</p>
+              <p class="dep-txt en">"She came to my place and was very punctual. I've already recommended her to several friends, they all loved it!"</p>
+              <div class="dep-autor">
+                <div class="dep-av">C</div>
+                <div>
+                  <p class="dep-nome">Camila Torres</p>
+                  <!-- <p class="dep-cargo pt">Cliente desde 2021</p>
+                  <p class="dep-cargo en">Client since 2021</p> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="c-dots">
+          <button class="cdot on" data-i="0"></button>
+          <button class="cdot" data-i="1"></button>
+          <button class="cdot" data-i="2"></button>
+        </div>
+      </section>
+
+      <hr />
+
+      <!-- CONTADORES -->
+      <section class="contadores reveal">
+        <div class="cnt">
+          <span class="cnt-n" data-to="200" data-sfx="+">0</span
+          ><span class="cnt-l pt">Clientes</span
+          ><span class="cnt-l en">Clients</span>
+        </div>
+        <div class="cnt">
+          <span class="cnt-n" data-to="100" data-sfx="%">0</span
+          ><span class="cnt-l pt">Satisfação</span
+          ><span class="cnt-l en">Satisfaction</span>
+        </div>
+        <div class="cnt">
+          <span class="cnt-n" data-to="5" data-sfx=" anos">0</span
+          ><span class="cnt-l pt">De técnica</span
+          ><span class="cnt-l en">Experience</span>
+        </div>
+      </section>
+
+      <hr />
+
+      <!-- HORÁRIOS -->
+      <section class="horarios reveal">
+        <p class="sec-titulo" style="margin-bottom: 12px">
+          <span class="pt">Horários</span><span class="en">Hours</span>
+        </p>
+        <div class="hitem" data-dias="1,2,3,4,5" data-open="9" data-close="19">
+          <span class="hdia pt">Segunda a sexta</span
+          ><span class="hdia en">Mon – Fri</span
+          ><span class="hhora">9h – 19h</span>
+        </div>
+        <div class="hitem" data-dias="6" data-open="9" data-close="16">
+          <span class="hdia pt">Sábado</span
+          ><span class="hdia en">Saturday</span
+          ><span class="hhora">9h – 16h</span>
+        </div>
+        <div class="hitem">
+          <span class="hdia pt">Domingo</span><span class="hdia en">Sunday</span
+          ><span class="hfech pt">Fechado</span
+          ><span class="hfech en">Closed</span>
+        </div>
+      </section>
+
+      <hr />
+
+      <!-- CATÁLOGO -->
+      <section class="reveal" style="margin-bottom: 24px">
+        <p class="sec-titulo pt">Serviços &amp; Preços</p>
+        <p class="sec-titulo en">Services &amp; Prices</p>
+        <div class="svc">
+          <button class="svc-h" aria-expanded="false">
+            <span class="pt">Manicure simples</span
+            ><span class="en">Basic manicure</span
+            ><span
+              style="
+                margin-left: auto;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+              "
+              ><span class="svc-preco">R$ 45</span
+              ><svg
+                class="svc-arr"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M6 9l6 6 6-6" /></svg
+            ></span>
+          </button>
+          <div class="svc-d">
+            <p class="pt">
+              Cutilagem, esmaltação e acabamento. Inclui hidratação das mãos.
+              Duração: ~45 min.
+            </p>
+            <p class="en">
+              Cuticle care, polish and finish. Includes hand moisturizing.
+              Duration: ~45 min.
+            </p>
+          </div>
+        </div>
+        <div class="svc">
+          <button class="svc-h" aria-expanded="false">
+            <span class="pt">Gel / Acrílico</span
+            ><span class="en">Gel / Acrylic</span
+            ><span
+              style="
+                margin-left: auto;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+              "
+              ><span class="svc-preco">R$ 120</span
+              ><svg
+                class="svc-arr"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M6 9l6 6 6-6" /></svg
+            ></span>
+          </button>
+          <div class="svc-d">
+            <p class="pt">
+              Alongamento com gel UV ou acrílico. Até 4 semanas de duração.
+              Inclui design básico. ~1h30.
+            </p>
+            <p class="en">
+              Nail extension with UV gel or acrylic. Up to 4 weeks. Includes
+              basic design. ~1h30.
+            </p>
+          </div>
+        </div>
+        <div class="svc">
+          <button class="svc-h" aria-expanded="false">
+            <span class="pt">Nail art completa</span
+            ><span class="en">Full nail art</span
+            ><span
+              style="
+                margin-left: auto;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+              "
+              ><span class="svc-preco">R$ 180</span
+              ><svg
+                class="svc-arr"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M6 9l6 6 6-6" /></svg
+            ></span>
+          </button>
+          <div class="svc-d">
+            <p class="pt">
+              Design personalizado com desenhos, pedras e glitter. Consulte
+              disponibilidade. ~2h.
+            </p>
+            <p class="en">
+              Custom design with drawings, gems and glitter. Check availability.
+              ~2h.
+            </p>
+          </div>
+        </div>
+        <div class="svc">
+          <button class="svc-h" aria-expanded="false">
+            <span class="pt">Pedicure</span><span class="en">Pedicure</span
+            ><span
+              style="
+                margin-left: auto;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+              "
+              ><span class="svc-preco">R$ 60</span
+              ><svg
+                class="svc-arr"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M6 9l6 6 6-6" /></svg
+            ></span>
+          </button>
+          <div class="svc-d">
+            <p class="pt">
+              Esfoliação, cutilagem, hidratação e esmaltação. ~1h.
+            </p>
+            <p class="en">
+              Exfoliation, cuticle care, moisturizing and polish. ~1h.
+            </p>
+          </div>
+        </div>
+      </section>
+      
+      <hr>
+
+      <!-- TAGS -->
+      <div class="reveal">
+        <p class="sec-titulo pt">Especialidades</p>
+        <p class="sec-titulo en">Specialties</p>
+        <div class="tags">
+          <span class="tag pt">Nail art</span><span class="tag en">Nail art</span>
+          <span class="tag pt">Gel</span><span class="tag en">Gel</span>
+          <span class="tag pt">Acrílico</span><span class="tag en">Acrylic</span>
+          <span class="tag pt">Manicure</span><span class="tag en">Manicure</span>
+          <span class="tag pt">Pedicure</span><span class="tag en">Pedicure</span>
+          <span class="tag pt">Press-on</span><span class="tag en">Press-on</span>
+          <span class="tag pt">Fibra</span><span class="tag en">Fiber</span>
+        </div>
+      </div>
+
+      <hr />
+
+      <!-- QR CODE -->
+      <section class="qr-sec reveal">
+        <p class="sec-titulo pt">Escaneie para compartilhar</p>
+        <p class="sec-titulo en">Scan to share</p>
+        <div id="qr-box"></div>
+        <p class="qr-label pt">Aponte a câmera do celular</p>
+        <p class="qr-label en">Point your phone camera here</p>
+      </section>
+
+      <footer class="rodape"><p>Cartão Digital · Isabela Rocha</p></footer>
+    </main>
+
+    <script>
+      // ══ CONFIG — edite aqui para cada cliente ══
+      const C = {
+        nome: "Isabela Rocha",
+        tel: "5521975811821",
+        telLabel: "(21) 99999-9999",
+        email: "isabela@email.com",
+        pix: "isabela@email.com",
+        site: window.location.href,
+      };
+
+      // ══ REVEAL ══
+      const obs = new IntersectionObserver(
+        (es) =>
+          es.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("v");
+              obs.unobserve(e.target);
+            }
+          }),
+        { threshold: 0.1 },
+      );
+      document
+        .querySelectorAll(".reveal,.pop")
+        .forEach((el) => obs.observe(el));
+      setTimeout(
+        () =>
+          document.querySelectorAll(".reveal,.pop").forEach((el) => {
+            if (el.getBoundingClientRect().top < window.innerHeight)
+              el.classList.add("v");
+          }),
+        60,
+      );
+
+      // ══ HORÁRIO DINÂMICO ══
+      (function () {
+        const now = new Date(),
+          dia = now.getDay(),
+          h = now.getHours() + now.getMinutes() / 60;
+        let aberto = false,
+          fechaAs = null;
+        document.querySelectorAll(".hitem[data-dias]").forEach((row) => {
+          const dias = row.dataset.dias.split(",").map(Number);
+          const op = +row.dataset.open,
+            cl = +row.dataset.close;
+          if (dias.includes(dia) && h >= op && h < cl) {
+            aberto = true;
+            fechaAs = cl;
+          }
+          if (dias.includes(dia))
+            row
+              .querySelectorAll(".hhora")
+              .forEach((x) => x.classList.add("hhoje"));
+        });
+        const badge = document.getElementById("badge");
+        const bpt = document.getElementById("badge-pt"),
+          ben = document.getElementById("badge-en");
+        if (aberto) {
+          bpt.textContent = `Fecha às ${Math.floor(fechaAs)}h`;
+          ben.textContent = `Closes at ${Math.floor(fechaAs)}h`;
+        } else {
+          badge.classList.add("fechado");
+          badge.querySelector(".dot").style.cssText =
+            "background:var(--texto3);animation:none";
+          bpt.textContent = "Fechado agora";
+          ben.textContent = "Closed now";
+        }
+      })();
+
+      // ══ SOBRE ══
+      const sobreBtn = document.getElementById("sobre-btn"),
+        sobreBody = document.getElementById("sobre-body");
+      sobreBtn.addEventListener("click", () => {
+        const open = sobreBtn.getAttribute("aria-expanded") === "true";
+        sobreBtn.setAttribute("aria-expanded", !open);
+        sobreBody.classList.toggle("open", !open);
+      });
+
+      // ══ CATÁLOGO ══
+      document.querySelectorAll(".svc-h").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const open = btn.getAttribute("aria-expanded") === "true";
+          document.querySelectorAll(".svc-h").forEach((b) => {
+            b.setAttribute("aria-expanded", "false");
+            b.nextElementSibling.classList.remove("open");
+          });
+          if (!open) {
+            btn.setAttribute("aria-expanded", "true");
+            btn.nextElementSibling.classList.add("open");
+          }
+        });
+      });
+
+      // ══ COPIAR TEL ══
+      document.getElementById("btn-tel").addEventListener("click", () => {
+        navigator.clipboard.writeText(C.telLabel).then(() => {
+          const f = document.getElementById("fb-tel");
+          f.classList.add("on");
+          setTimeout(() => f.classList.remove("on"), 2500);
+        });
+      });
+
+      // ══ COPIAR PIX ══
+      document.getElementById("btn-pix").addEventListener("click", () => {
+        navigator.clipboard.writeText(C.pix).then(() => {
+          const f = document.getElementById("fb-pix");
+          f.classList.add("on");
+          setTimeout(() => f.classList.remove("on"), 2500);
+        });
+      });
+
+      // ══ SALVAR VCF ══
+      document.getElementById("btn-vcf").addEventListener("click", () => {
+        const vcf = `BEGIN:VCARD\nVERSION:3.0\nFN:${C.nome}\nTEL;TYPE=CELL:+${C.tel}\nEMAIL:${C.email}\nURL:${C.site}\nEND:VCARD`;
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(
+          new Blob([vcf], { type: "text/vcard;charset=utf-8" }),
+        );
+        a.download = C.nome.replace(/\s+/g, "_") + ".vcf";
+        a.click();
+      });
+
+      // ══ LIGHTBOX ══
+      document.querySelectorAll(".gitem").forEach((item) => {
+        item.addEventListener("click", () => {
+          const img = item.querySelector("img");
+          if (!img) return;
+          document.getElementById("lb-img").src = img.src;
+          document.getElementById("lb").classList.add("on");
+          document.body.classList.add("lb-open");
+        });
+      });
+      function closeLb() {
+        document.getElementById("lb").classList.remove("on");
+        document.body.classList.remove("lb-open");
+      }
+      document.getElementById("lb-close").addEventListener("click", closeLb);
+      document.getElementById("lb").addEventListener("click", (e) => {
+        if (e.target === document.getElementById("lb")) closeLb();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeLb();
+      });
+
+      // ══ CARROSSEL ══
+      let ci = 0;
+      const track = document.getElementById("c-track");
+      const dots = document.querySelectorAll(".cdot");
+      const total = document.querySelectorAll(".dep").length;
+      function goTo(i) {
+        ci = (i + total) % total;
+        track.style.transform = `translateX(-${ci * 100}%)`;
+        dots.forEach((d, j) => {
+          d.classList.toggle("on", j === ci);
+          d.setAttribute("aria-selected", j === ci);
+        });
+      }
+      dots.forEach((d) =>
+        d.addEventListener("click", () => goTo(+d.dataset.i)),
+      );
+      let ap = setInterval(() => goTo(ci + 1), 5000);
+      track.parentElement.addEventListener("pointerenter", () =>
+        clearInterval(ap),
+      );
+      track.parentElement.addEventListener("pointerleave", () => {
+        ap = setInterval(() => goTo(ci + 1), 5000);
+      });
+      let tx = 0;
+      track.addEventListener(
+        "touchstart",
+        (e) => {
+          tx = e.touches[0].clientX;
+        },
+        { passive: true },
+      );
+      track.addEventListener("touchend", (e) => {
+        const d = tx - e.changedTouches[0].clientX;
+        if (Math.abs(d) > 40) goTo(ci + (d > 0 ? 1 : -1));
+      });
+
+      // ══ CONTADORES ══
+      const obsC = new IntersectionObserver(
+        (es) =>
+          es.forEach((e) => {
+            if (!e.isIntersecting) return;
+            const el = e.target,
+              alvo = +el.dataset.to,
+              sfx = el.dataset.sfx || "",
+              dur = 1400,
+              t0 = performance.now();
+            function tick(now) {
+              const p = Math.min((now - t0) / dur, 1);
+              el.textContent = Math.round(p * p * alvo) + sfx;
+              if (p < 1) requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+            obsC.unobserve(el);
+          }),
+        { threshold: 0.5 },
+      );
+      document.querySelectorAll(".cnt-n").forEach((el) => obsC.observe(el));
+
+      // ══ QR CODE ══
+      window.addEventListener("load", () => {
+        try {
+          new QRCode(document.getElementById("qr-box"), {
+            text: C.site,
+            width: 140,
+            height: 140,
+            colorDark: "#000",
+            colorLight: "#fff",
+            correctLevel: QRCode.CorrectLevel.M,
+          });
+        } catch (e) {
+          document.getElementById("qr-box").innerHTML =
+            '<p style="font-size:11px;color:#999;padding:8px;">QR indisponível offline</p>';
+        }
+      });
+
+      // ══ LANG TOGGLE ══
+      document.getElementById("lang-btn").addEventListener("click", () => {
+        const html = document.documentElement,
+          cur = html.getAttribute("data-lang");
+        html.setAttribute("data-lang", cur === "pt" ? "en" : "pt");
+      });
+    </script>
+  </body>
+</html>
